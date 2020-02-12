@@ -49,3 +49,37 @@ body {
   border-radius: 5px;
   transform: rotate(90deg);
 }
+
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.previews {
+  display: flex;
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+
+.preview {
+		display: inline-flex;
+		border-radius: 2px;
+		border: 1px solid #eaeaea;
+		margin-bottom: 8px;
+		margin-right: 8px;
+		width: 100px;
+		height: 100px;
+		padding: 4px;
+		box-sizing: border-box;
+}
+
+.preview__thumb {
+		display: flex;
+		min-width: 0px;
+		overflow: hidden;
+}
+.preview__img {
+		display: block;
+		width: auto;
+		height: 100%;
+}

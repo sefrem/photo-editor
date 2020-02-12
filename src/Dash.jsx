@@ -1,71 +1,85 @@
-import React from "react";
-import { Dashboard } from "@uppy/react";
-import "@uppy/core/dist/style.css";
-import "@uppy/dashboard/dist/style.css";
-import Select from './Select'
-import Uppy from "@uppy/core";
+import React, { useEffect, useState } from "react";
+import { useDropzone } from "react-dropzone";
+const store = require("store");
+
+function Dash(props) {
+	const [files, setFiles] = useState([]);
+	const [error, setError] = useState([]);
+
+	const { getRootProps, getInputProps } = useDropzone({
+		accept: "image/*",
+		onDrop: acceptedFiles => {
+	    setError('');
+	    if(files.length + acceptedFiles.length > 5) {
+	      return setError("Не больше 5 файлов")
+	    }
+      acceptedFiles.map(file => console.log(file))
+	// const images = [];
+	// acceptedFiles.forEach(file => {
+	//   let url = file.path;
+	//   let preview = URL.createObjectURL(file);
+	//   let image = {url: url, preview: preview}
+	//   images.push(image)
+	// })
+	// store.set('images', JSON.stringify(images))
+
+			setFiles(
+				files.concat(
+					acceptedFiles.map(file =>
+						Object.assign(file, {
+							preview: URL.createObjectURL(file),
+						})
+					)
+				)
+	    );
+
+	    console.log(files);
+		},
+	});
+
+	//JSON { images: [{url: ‘’, preview: ‘’}] }
+
+	const thumbs = files.map(file => (
+		<div className="preview" key={file.name}>
+			<div className="preview__thumb">
+				<img src={file.preview} alt="" className="preview__img" />
+			</div>
+		</div>
+	));
+
+	useEffect(
+		() => () => {
+			// Make sure to revoke the data uris to avoid memory leaks
+			files.forEach(file => URL.revokeObjectURL(file.preview));
+		},
+		[files]
+	);
+
+  // https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
+
+	return (
+		<div className="dashboard">
+			<div className="previews">
+				{thumbs}
+				<div {...getRootProps({ className: "file-selection" })}>
+					<input {...getInputProps()} />
+				{/* <div className="drop-area">
+					<input
+						type="file"
+						id="fileElem"
+						className="file-selection"
+						multiple
+						accept="image/*"
+						// onChange={handleFiles(this.files)}
+					/>
+				</div> */}
+				<div>{error}</div>
+			</div>
+      </div>
+		</div>
+	);
+}
+
+export default Dash;
 
 
-
-//   uppy.use(Dashboard, {
-//     id: 'Dashboard',
-//     target: 'body',
-//     metaFields: [],
-//     trigger: '#uppy-select-files',
-//     inline: false,
-//     width: 750,
-//     height: 550,
-//     thumbnailWidth: 280,
-//     showLinkToFileUploadResult: true,
-//     showProgressDetails: false,
-//     hideUploadButton: false,
-//     hideRetryButton: false,
-//     hidePauseResumeButton: false,
-//     hideCancelButton: false,
-//     hideProgressAfterFinish: false,
-//     note: null,
-//     closeModalOnClickOutside: false,
-//     closeAfterFinish: false,
-//     disableStatusBar: false,
-//     disableInformer: false,
-//     disableThumbnailGenerator: false,
-//     disablePageScrollWhenModalOpen: true,
-//     animateOpenClose: true,
-//     proudlyDisplayPoweredByUppy: true,
-//     onRequestCloseModal: () => this.closeModal(),
-//     showSelectedFiles: true,
-//     browserBackButtonClose: false
-//   })
-
-  class Dash extends React.Component {
-      constructor(props) {
-        super(props);
-        this.uppy = new Uppy({
-            id: "uppy1",
-    debug: true,
-    autoProceed: false,
-    restrictions: {
-      maxNumberOfFiles: 5,
-    }
-            })
-      }
-  
-    componentWillUnmount() {
-      this.uppy.close();
-    }
-  
-    render() {
-      return (
-        <div>
-          <Dashboard uppy={this.uppy}
-                showProgressDetails={true}
-                hideUploadButton={true}
-                allowMultipleUploads={true}
-          />
-          <Select />
-        </div>
-      );
-    }
-  }
-  
-  export default Dash;
