@@ -1,80 +1,57 @@
-import React, { useEffect, useState } from "react";
-import { useDropzone } from "react-dropzone";
-const store = require("store");
+import React, { useState } from "react";
+import { useDrop } from "react-dnd";
+import Dropzone from "./Dropzone";
+import Preview from "./Preview";
+import update from "immutability-helper";
 
-function Dash(props) {
-  const [files, setFiles] = useState([]);
-  const [error, setError] = useState([]);
+const Dash = () => {
+	const [files, setFiles] = useState([]);
+	const [error, setError] = useState([]);
 
+	const moveFile = (id, atIndex) => {
+		const { file, index } = findFile(id);
+		// let draggedFile = files.splice(index, 1);
 
+		// let newFiles = files.splice(atIndex, 0, ...draggedFile);
+		setFiles(
+			update(files, {
+				$splice: [
+					[index, 1],
+					[atIndex, 0, ...file],
+				],
+			})
+		);
+	};
 
-    const { getRootProps, getInputProps } = useDropzone({
-      accept: "image/*",
-      onDrop: acceptedFiles => {
-        setError("");
-        if (files.length + acceptedFiles.length > 5) {
-          return setError("Не больше 5 файлов");
-        }
-		acceptedFiles.map(file => console.log(file));
-		
-        // const images = [];
-        // acceptedFiles.forEach(file => {
-        //   let url = file.path;
-        //   let preview = URL.createObjectURL(file);
-        //   let image = {url: url, preview: preview}
-        //   images.push(image)
-        // })
-        // store.set('images', JSON.stringify(images))
-
-        setFiles(
-          files.concat(
-            acceptedFiles.map(file =>
-              Object.assign(file, {
-                preview: URL.createObjectURL(file)
-              })
-            )
-          )
-        );
-
-        console.log(files);
-      }
-    });
-
-    //JSON { images: [{url: ‘’, preview: ‘’}] }
-
-    const thumbs = files.map(file => (
-      <div className="preview" key={file.name}>
-        <div className="preview__thumb">
-          <img src={file.preview} alt="" className="preview__img" />
-        </div>
-      </div>
-    ));
-
-    useEffect(
-      () => () => {
-        // Make sure to revoke the data uris to avoid memory leaks
-        files.forEach(file => URL.revokeObjectURL(file.preview));
-      },
-      [files]
-    );
-
-//   https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
-
-
-  return (
-    <div className="dashboard">
-      <div className="previews">
-        {thumbs} 
-         <div {...getRootProps({ className: "file-selection" })}>
-          <input {...getInputProps()} /> 
-        </div>
-		<div>{error}</div>
-      </div>
-	</div>
-
-
-  );
-}
+	const findFile = id => {
+		const file = files.filter((file, index) => index === id);
+		return {
+			file,
+			index: files.indexOf(file[0]),
+		};
+	};
+	const [, drop] = useDrop({ accept: "preview" });
+	return (
+		<div className="dashboard">
+			<div className="previews" ref={drop}>
+				{files.map((file, index) => (
+					<Preview
+						id={index}
+						key={file.name}
+						file={file}
+						index={index}
+						files={files}
+						setFiles={setFiles}
+						moveFile={moveFile}
+						findFile={findFile}
+					/>
+				))}
+        
+				<Dropzone files={files} setFiles={setFiles} setError={setError} />
+			</div>
+			<div>{error}</div>
+		</div>
+	);
+};
 
 export default Dash;
-
