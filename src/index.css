@@ -118,3 +118,8 @@ body {
 	border-radius: 4px;
 	transform: rotate(135deg);
 }
+
+
+.tui-image-editor-container { 
+	height: 810px !important;
+}
