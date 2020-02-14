@@ -3,10 +3,12 @@ import { useDrop } from 'react-dnd'
 import Dropzone from './Dropzone'
 import Preview from './Preview'
 import update from 'immutability-helper'
+import Editor from "./Editor"
 
 const Dash = () => {
   const [files, setFiles] = useState([])
-  const [error, setError] = useState([])
+  const [error, setError] = useState('')
+  const [selectedId, setSelectedId] = useState(Number)
 
   const moveFile = (id, atIndex) => {
     const { file, index } = findFile(id)
@@ -20,6 +22,10 @@ const Dash = () => {
     )
   }
 
+  const onClick = e => {
+    setSelectedId(e.currentTarget.id)
+  }
+
   const findFile = id => {
     const file = files.filter((file, index) => index === id)
     return {
@@ -29,6 +35,7 @@ const Dash = () => {
   }
   const [, drop] = useDrop({ accept: 'preview' })
   return (
+    <>
     <div className="dashboard">
       <div className="previews" ref={drop}>
         {files.map((file, index) => (
@@ -41,6 +48,7 @@ const Dash = () => {
             setFiles={setFiles}
             moveFile={moveFile}
             findFile={findFile}
+            onClick={onClick}
           />
         ))}
 
@@ -48,6 +56,9 @@ const Dash = () => {
       </div>
       <div>{error}</div>
     </div>
+    <div id="tui-image-editor"></div>
+    {selectedId ? <Editor files={files} id={selectedId}/> : null}
+    </>
   )
 }
 

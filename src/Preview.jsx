@@ -3,7 +3,7 @@ import Remove from './Remove'
 import { useDrag, useDrop } from 'react-dnd'
 
 const Preview = props => {
-  const { file, id, files, setFiles, moveFile, findFile } = props
+  const { file, id, files, setFiles, moveFile, findFile, onClick } = props
 
   const originalIndex = findFile(id).index
   const [{ isDragging }, drag] = useDrag({
@@ -18,7 +18,7 @@ const Preview = props => {
   })
 
   return (
-    <div className="preview" id={id} ref={node => drag(drop(node))}>
+    <div className="preview" id={id} onClick={onClick} ref={node => drag(drop(node))}>
       <div className="preview__thumb">
         <img src={file.preview} alt="" className="preview__img" />
       </div>
