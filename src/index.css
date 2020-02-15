@@ -120,6 +120,10 @@ body {
 }
 
 
-.tui-image-editor-container { 
+/* .tui-image-editor-container { 
 	height: 810px !important;
+} */
+
+.tie-btn-delete, .tie-btn-delete-all, .tui-image-editor-icpartition, .tui-image-editor-header-logo {
+display: none !important;
 }

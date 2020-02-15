@@ -34,6 +34,7 @@ const Dash = () => {
     }
   }
   const [, drop] = useDrop({ accept: 'preview' })
+  console.log("files", files)
   return (
     <>
       <div className="dashboard">
@@ -56,8 +57,8 @@ const Dash = () => {
         </div>
         <div>{error}</div>
       </div>
-      <div id="tui-image-editor"></div>
-      {selectedId ? <Editor files={files} id={selectedId} /> : null}
+      {/* <div id="tui-image-editor"></div> */}
+      {selectedId ? <Editor files={files} id={selectedId} setFiles={setFiles}/> : null}
     </>
   )
 }
