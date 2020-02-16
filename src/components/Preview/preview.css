@@ -1,0 +1,19 @@
+.preview {
+	display: inline-flex;
+	position: relative;
+	width: 100px;
+	height: 100px;
+}
+
+.preview__thumb {
+	display: flex;
+	min-width: 0px;
+	overflow: hidden;
+	border: 1px solid #eaeaea;
+	border-radius: 5px;
+}
+.preview__img {
+	display: block;
+	width: auto;
+	height: 100%;
+}

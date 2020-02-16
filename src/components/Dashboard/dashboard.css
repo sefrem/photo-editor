@@ -1,0 +1,10 @@
+.dashboard {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.dashboard__previews {
+	display: flex;
+	max-width: 100%;
+	flex-wrap: wrap;
+}

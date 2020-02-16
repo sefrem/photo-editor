@@ -1,0 +1,23 @@
+.mt-15 {
+    margin-top: 15px;
+}
+
+.mt--8 {
+    margin-top: -8px;
+}
+
+.mr-12 {
+    margin-right: 12px;
+}
+
+.mb-18 {
+    margin-bottom: 18px;
+}
+
+.mb-12 {
+    margin-bottom: 12px;
+}
+
+.ml--16 {
+    margin-left: -16px;
+}

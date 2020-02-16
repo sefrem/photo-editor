@@ -1,0 +1,10 @@
+.tui-image-editor-container, .tui-image-editor-controls, .tui-image-editor-main-container  { 
+	background-color: #545454 !important;
+}
+
+.tie-btn-delete, .tie-btn-delete-all, 
+.tui-image-editor-icpartition, .tui-image-editor-header,
+.tie-btn-undo, .tie-btn-redo {
+    display: none !important;
+}
+

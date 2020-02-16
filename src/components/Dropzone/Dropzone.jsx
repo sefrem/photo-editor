@@ -1,9 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useContext } from 'react'
+import { StoreContext } from '../../utils/store'
 import { useDropzone } from 'react-dropzone'
-const store = require('store')
+// const store = require('store')
 
-const Dropzone = props => {
-  const { files, setFiles, setError } = props
+const Dropzone = () => {
+  const {
+    filesStore: [files, setFiles],
+    errorStore: [, setError],
+  } = useContext(StoreContext)
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: 'image/*',
@@ -36,16 +40,8 @@ const Dropzone = props => {
     },
   })
 
-  useEffect(
-    () => () => {
-      // Make sure to revoke the data uris to avoid memory leaks
-      files.forEach(file => URL.revokeObjectURL(file.preview))
-    },
-    [files]
-  )
-
   return (
-    <div {...getRootProps()} className="file-selection">
+    <div {...getRootProps()} className="dropzone">
       <input {...getInputProps()} />
     </div>
   )
