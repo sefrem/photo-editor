@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import Dashboard from '../Dashboard/Dashboard'
+import Gallery from '../Gallery/Gallery'
 import Editor from '../Editor/Editor'
 import { DndProvider } from 'react-dnd'
 import Backend from 'react-dnd-html5-backend'
@@ -16,7 +16,7 @@ const App = () => {
         <Editor />
       ) : (
         <DndProvider backend={Backend}>
-          <Dashboard />
+          <Gallery />
         </DndProvider>
       )}
     </div>
