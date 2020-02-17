@@ -67,6 +67,11 @@ const Editor = () => {
     observer.observe(crop, config)
     observer.observe(rotate, config)
     observer.observe(draw, config)
+    return () => {
+      observer.disconnect(crop, config)
+      observer.disconnect(rotate, config)
+      observer.disconnect(draw, config)
+    }
   })
 
   return (
