@@ -31,6 +31,22 @@ const Editor = () => {
   //   console.log(e)
   // }
 
+  // const headerUpdate = () => {
+  //   const selectedTool = editorRef.current.getInstance().ui.submenu;
+  //   switch (selectedTool) {
+  //     case 'crop':
+  //       setEditorHeader('Crop image')
+  //       break
+  //     case 'rotate':
+  //       setEditorHeader('Rotate image')
+  //       break
+  //     case 'draw':
+  //       setEditorHeader('Draw a line')
+  //       break
+  //     default:
+  //   }
+  // }
+
   const callback = mutationList => {
     mutationList.forEach(mutation => {
       if (mutation.type === 'attributes') {
@@ -61,6 +77,8 @@ const Editor = () => {
   const observer = new MutationObserver(callback)
 
   useEffect(() => {
+    // headerUpdate();
+    // editorRef.current.getInstance().ui
     const crop = document.getElementById('tie-btn-crop')
     const rotate = document.getElementById('tie-btn-rotate')
     const draw = document.getElementById('tie-btn-draw')
