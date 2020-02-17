@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from 'react'
+import React, { useRef, useContext, useEffect } from 'react'
 import { StoreContext } from '../../utils/store'
 import 'tui-image-editor/dist/tui-image-editor.css'
 import ImageEditor from '@toast-ui/react-image-editor'
@@ -20,6 +20,7 @@ const Editor = () => {
   const {
     filesStore: [files],
     selectedIdStore: [id],
+    editorHeaderStore: [editorHeader, setEditorHeader],
   } = useContext(StoreContext)
 
   const path = files[id].preview
@@ -30,9 +31,47 @@ const Editor = () => {
   //   console.log(e)
   // }
 
+  const callback = mutationList => {
+    mutationList.forEach(mutation => {
+      if (mutation.type === 'attributes') {
+        if (mutation.target.classList.contains('active')) {
+          let targetName = mutation.target.id.substring(
+            mutation.target.id.lastIndexOf('-') + 1
+          )
+          switch (targetName) {
+            case 'crop':
+              setEditorHeader('Crop image')
+              break
+            case 'rotate':
+              setEditorHeader('Rotate image')
+              break
+            case 'draw':
+              setEditorHeader('Draw a line')
+              break
+            default:
+          }
+        } else {
+          setEditorHeader('Crop, rotate or draw')
+        }
+      }
+    })
+  }
+  const config = { attributes: true }
+
+  const observer = new MutationObserver(callback)
+
+  useEffect(() => {
+    const crop = document.getElementById('tie-btn-crop')
+    const rotate = document.getElementById('tie-btn-rotate')
+    const draw = document.getElementById('tie-btn-draw')
+    observer.observe(crop, config)
+    observer.observe(rotate, config)
+    observer.observe(draw, config)
+  })
+
   return (
     <div className="editor">
-      <Header messageText="Drag or select photo" classNameMessage="editor__header" />
+      <Header messageText={editorHeader} className="editor__header" />
       <ImageEditor
         ref={editorRef}
         includeUI={{
