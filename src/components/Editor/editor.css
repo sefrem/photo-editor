@@ -4,8 +4,18 @@
 
 .tie-btn-delete, .tie-btn-delete-all, 
 .tui-image-editor-icpartition, .tui-image-editor-header,
-.tie-btn-undo, .tie-btn-redo {
+.tie-btn-undo, .tie-btn-redo, .tui-colorpicker-palette-hex,
+div.tui-colorpicker-clearfix {
     display: none !important;
+}
+.tui-colorpicker-clearfix {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tui-colorpicker-palette-button {
+    width: 20px;
+    height: 20px;
 }
 
 .editor {
