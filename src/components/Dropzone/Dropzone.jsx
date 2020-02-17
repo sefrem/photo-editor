@@ -12,7 +12,7 @@ const Dropzone = () => {
   const { getRootProps, getInputProps } = useDropzone({
     accept: 'image/*',
     onDrop: acceptedFiles => {
-      setError('')
+      setError(null)
       if (files.length + acceptedFiles.length > 5) {
         return setError('Не больше 5 файлов')
       }
