@@ -8,3 +8,10 @@
     display: none !important;
 }
 
+.editor {
+    position: relative;
+}
+.editor__header {
+    position: absolute;
+    color: white;
+}

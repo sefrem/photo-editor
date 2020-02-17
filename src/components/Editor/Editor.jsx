@@ -3,6 +3,7 @@ import { StoreContext } from '../../utils/store'
 import 'tui-image-editor/dist/tui-image-editor.css'
 import ImageEditor from '@toast-ui/react-image-editor'
 import ButtonGroup from '../ButtonGroup/ButtonGroup'
+import Header from '../UI/Header'
 const icona = require('tui-image-editor/dist/svg/icon-a.svg')
 const iconb = require('tui-image-editor/dist/svg/icon-b.svg')
 const iconc = require('tui-image-editor/dist/svg/icon-c.svg')
@@ -30,7 +31,8 @@ const Editor = () => {
   // }
 
   return (
-    <>
+    <div className="editor">
+      <Header messageText="Drag or select photo" classNameMessage="editor__header" />
       <ImageEditor
         ref={editorRef}
         includeUI={{
@@ -56,7 +58,7 @@ const Editor = () => {
         // onObjectActivated={onObject}
       />
       <ButtonGroup editorRef={editorRef} />
-    </>
+    </div>
   )
 }
 

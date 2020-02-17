@@ -18,6 +18,7 @@ const Gallery = () => {
       <Header
         progressText="STEP 1/3"
         messageText="Drag or select photo"
+        className="mt-15"
         classNameProgress="header__progress"
         classNameMessage="header__message"
       />
