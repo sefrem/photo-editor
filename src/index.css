@@ -1,6 +1,5 @@
 @import './stylesheets/base.css';
 @import './stylesheets/utils.css';
-@import './components/Header/header.css';
 @import './components/Gallery/gallery.css';
 @import './components/Preview/preview.css';
 @import './components/Dropzone/dropzone.css';

@@ -1,10 +1,23 @@
-.dashboard {
+.gallery {
 	display: flex;
 	flex-wrap: wrap;
 }
 
-.dashboard__previews {
+.gallery__previews {
 	display: flex;
 	max-width: 100%;
 	flex-wrap: wrap;
+}
+
+.header__progress {
+	font-family: SF Pro Display;
+	font-weight: 500;
+	font-size: 13px;
+	line-height: 16px;
+	color: #BABABA;
+}
+
+.header__message {
+	font-weight: bold;
+	font-size: 20px;
 }

@@ -3,9 +3,9 @@ import { StoreContext } from '../../utils/store'
 import { useDrop } from 'react-dnd'
 import Dropzone from '../Dropzone/Dropzone'
 import Preview from '../Preview/Preview'
-import Header from '../Header/Header'
+import Header from '../UI/Header'
 
-const Dashboard = () => {
+const Gallery = () => {
   const {
     filesStore: [files],
     errorStore: [error],
@@ -15,9 +15,14 @@ const Dashboard = () => {
 
   return (
     <>
-      <Header />
-      <div className="dashboard mt-15">
-        <div className="dashboard__previews" ref={drop}>
+      <Header
+        progressText="STEP 1/3"
+        messageText="Drag or select photo"
+        classNameProgress="header__progress"
+        classNameMessage="header__message"
+      />
+      <div className="gallery mt-15">
+        <div className="gallery__previews" ref={drop}>
           {files.map((file, index) => (
             <Preview key={file.name} file={file} index={index} />
           ))}
@@ -29,4 +34,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default Gallery
