@@ -1,11 +1,11 @@
 @import './stylesheets/base.css';
 @import './stylesheets/utils.css';
 @import './components/Gallery/gallery.css';
-@import './components/Preview/preview.css';
-@import './components/Dropzone/dropzone.css';
+@import './components/Gallery/Preview/preview.css';
+@import './components/Gallery/Dropzone/dropzone.css';
 @import './components/Editor/editor.css';
-@import './components/Remove/remove.css';
-@import './components/ButtonGroup/buttonGroup.css';
+@import './components/Gallery/Preview/Remove/remove.css';
+@import './components/Editor/ButtonGroup/buttonGroup.css';
 @import './components/App/app.css'
 
 

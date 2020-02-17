@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import { StoreContext } from '../../utils/store'
-import Button from '../UI/Button'
+import { StoreContext } from '../../../utils/store'
+import Button from '../../UI/Button'
 
 const ButtonGroup = props => {
   const {

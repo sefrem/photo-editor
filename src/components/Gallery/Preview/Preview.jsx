@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import { StoreContext } from '../../utils/store'
-import Remove from '../Remove/Remove'
+import { StoreContext } from '../../../utils/store'
+import Remove from './Remove/Remove'
 import { useDrag, useDrop } from 'react-dnd'
 import update from 'immutability-helper'
 

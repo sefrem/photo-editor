@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { StoreContext } from '../../utils/store'
+import { StoreContext } from '../../../../utils/store'
 
 const Remove = props => {
   const { id } = props

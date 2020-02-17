@@ -2,12 +2,14 @@ import React, { useRef, useContext, useEffect } from 'react'
 import { StoreContext } from '../../utils/store'
 import 'tui-image-editor/dist/tui-image-editor.css'
 import ImageEditor from '@toast-ui/react-image-editor'
-import ButtonGroup from '../ButtonGroup/ButtonGroup'
+import ButtonGroup from './ButtonGroup/ButtonGroup'
 import Header from '../UI/Header'
+// import * as icond from '../../../icons/crop.svg'
 const icona = require('tui-image-editor/dist/svg/icon-a.svg')
 const iconb = require('tui-image-editor/dist/svg/icon-b.svg')
 const iconc = require('tui-image-editor/dist/svg/icon-c.svg')
 const icond = require('tui-image-editor/dist/svg/icon-d.svg')
+// const icond = require('../../../icons/crop.svg')
 const blackTheme = {
   // main icons
   'menu.normalIcon.path': icond,

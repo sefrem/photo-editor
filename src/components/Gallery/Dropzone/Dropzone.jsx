@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { StoreContext } from '../../utils/store'
+import { StoreContext } from '../../../utils/store'
 import { useDropzone } from 'react-dropzone'
 // const store = require('store')
 

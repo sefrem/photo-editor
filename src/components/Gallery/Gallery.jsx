@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { StoreContext } from '../../utils/store'
 import { useDrop } from 'react-dnd'
-import Dropzone from '../Dropzone/Dropzone'
-import Preview from '../Preview/Preview'
+import Dropzone from './Dropzone/Dropzone'
+import Preview from './Preview/Preview'
 import Header from '../UI/Header'
 
 const Gallery = () => {
