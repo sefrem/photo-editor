@@ -17,7 +17,7 @@ const blackTheme = {
 
 const Editor = () => {
   const {
-    files: {files},
+    files: { files },
     selectedFileId: [selectedFileId],
     editorTitle: [editorTitle, setEditorTitle],
   } = useContext(StoreContext)

@@ -7,13 +7,13 @@ const Preview = props => {
   const { file, id } = props
 
   const {
-    files: {files, setFiles },
+    files: { files, setFiles },
     selectedFileId: [, setSelectedFileId],
     showEditor: [, setShowEditor],
   } = useContext(StoreContext)
 
   const [, drag] = useDrag({
-    item: { type: 'preview', id},
+    item: { type: 'preview', id },
   })
   const [, drop] = useDrop({
     accept: 'preview',
@@ -25,9 +25,7 @@ const Preview = props => {
   const moveFile = (fromIndex, toIndex) => {
     let newFiles = [...files]
     newFiles.splice(toIndex, 0, newFiles.splice(fromIndex, 1)[0])
-    setFiles(
-      newFiles
-    )
+    setFiles(newFiles)
   }
 
   const selectAndEdit = e => {

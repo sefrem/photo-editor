@@ -7,7 +7,7 @@ import Send from './Send/Send'
 
 const Gallery = () => {
   const {
-    files: {files},
+    files: { files },
     error: [error],
   } = useContext(StoreContext)
 

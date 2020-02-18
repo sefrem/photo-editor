@@ -18,7 +18,7 @@ export const StoreProvider = ({ children }) => {
     files: {
       files,
       setFiles,
-      removeFile: (e, id) =>  {
+      removeFile: (e, id) => {
         e.stopPropagation()
         setFiles(files.filter((file, index) => index !== id))
       },
