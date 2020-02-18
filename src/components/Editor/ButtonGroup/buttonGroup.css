@@ -11,9 +11,8 @@
     padding-bottom: 18px;
 }
 
-.buttonGroup__submit {
-	width: 155px;
-	height: 60px;
+.button-submit {
+	padding: 9px 34px 13px; 
 	background: #E021F0;
 	border-radius: 100px;
 	border-color: #E021F0;
@@ -24,7 +23,13 @@
 	border-style: solid;
 }
 
-.buttonGroup__cancel {
+.button-submit__icon {
+	position: relative;
+	top: 5px;
+	left: 14px;
+}
+
+.button-cancel {
 	font-weight: bold;
 	font-size: 20px;
 	color: #FFFFFF;

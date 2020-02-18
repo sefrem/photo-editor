@@ -23,8 +23,8 @@ const Send = () => {
   return (
     <Button
       onClick={addToLocalStorage}
-      className={'mt-15 send'}
-      value={'Send'}
+      className='mt-15 send'
+      value='Send'
     />
   )
 }
