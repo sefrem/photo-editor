@@ -4,7 +4,9 @@
 	height: 102px;
 	background: #545454;
 	border-radius: 5px;
+	cursor: pointer;
 }
+
 
 .dropzone:before {
 	content: "";

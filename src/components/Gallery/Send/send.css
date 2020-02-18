@@ -1,7 +1,7 @@
 .send {
     width: 105px;
 	height: 40px;
-	background: #E021F0;
+	background:#E021F0;
 	border-radius: 100px;
 	border-color: #E021F0;
 	font-weight: bold;
@@ -9,4 +9,14 @@
 	line-height: 24px;
 	color: white;
 	border-style: solid;
+	cursor: pointer;
+}
+
+.send:hover {
+	background: #d20ae4;
+	border-color: #d20ae4;
+}
+
+.send:active {
+	transform: translateY(1px);
 }

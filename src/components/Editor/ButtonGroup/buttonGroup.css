@@ -12,6 +12,7 @@
 }
 
 .button-submit {
+	cursor: pointer;
 	padding: 9px 34px 13px; 
 	background: #E021F0;
 	border-radius: 100px;
@@ -23,6 +24,15 @@
 	border-style: solid;
 }
 
+.button-submit:hover {
+	background: #d20ae4;
+	border-color: #d20ae4;
+}
+
+.button-submit:active {
+	transform: translateY(1px);
+}
+
 .button-submit__icon {
 	position: relative;
 	top: 5px;
@@ -30,6 +40,7 @@
 }
 
 .button-cancel {
+	cursor: pointer;
 	font-weight: bold;
 	font-size: 20px;
 	color: #FFFFFF;

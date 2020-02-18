@@ -55,8 +55,8 @@ const ButtonGroup = props => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M9.37035 26.3342L31.877 3.82753L28.3415 0.291992L9.37042 19.2631L3.72383 13.6165L0.188293 17.152L5.83489 22.7986L5.83481 22.7987L9.37035 26.3342Z"
                 fill="white"
               />

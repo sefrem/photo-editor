@@ -5,6 +5,7 @@
 	height: 32px;
 	background: #4a4a4a;
 	border-radius: 20px;
+	cursor: pointer;
 }
 
 .remove:before {
