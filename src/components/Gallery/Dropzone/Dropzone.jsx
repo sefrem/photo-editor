@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { StoreContext } from '../../../utils/store'
 import { useDropzone } from 'react-dropzone'
-// const store = require('store')
 
 const Dropzone = () => {
   const {
@@ -18,15 +17,6 @@ const Dropzone = () => {
       }
 
       //JSON { images: [{url: ‘’, preview: ‘’}] }
-
-      // const images = [];
-      // acceptedFiles.forEach(file => {
-      //   let url = file.path;
-      //   let preview = URL.createObjectURL(file);
-      //   let image = {url: url, preview: preview}
-      //   images.push(image)
-      // })
-      // store.set('images', JSON.stringify(images))
 
       setFiles(
         files.concat(

@@ -6,6 +6,6 @@
 @import './components/Editor/editor.css';
 @import './components/Gallery/Preview/Remove/remove.css';
 @import './components/Editor/ButtonGroup/buttonGroup.css';
-@import './components/App/app.css'
-
+@import './components/App/app.css';
+@import './components/Gallery/Send/send.css';
 

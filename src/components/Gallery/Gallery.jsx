@@ -4,6 +4,7 @@ import { useDrop } from 'react-dnd'
 import Dropzone from './Dropzone/Dropzone'
 import Preview from './Preview/Preview'
 import Header from '../UI/Header'
+import Send from "./Send/Send"
 
 const Gallery = () => {
   const {
@@ -31,6 +32,7 @@ const Gallery = () => {
         </div>
         <div>{error}</div>
       </div>
+      <Send />
     </>
   )
 }
