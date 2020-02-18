@@ -1,53 +1,38 @@
 import React, { useContext } from 'react'
-import { StoreContext } from '../../../utils/store'
+import { StoreContext } from '../../../context/store'
 import Remove from './Remove/Remove'
 import { useDrag, useDrop } from 'react-dnd'
-import update from 'immutability-helper'
 
 const Preview = props => {
-  const { file, index: id } = props
+  const { file, id } = props
 
   const {
-    filesStore: [files, setFiles],
-    selectedIdStore: [, setSelectedId],
-    editorShowStore: [, setEditorShow],
+    files: {files, setFiles },
+    selectedFileId: [, setSelectedFileId],
+    showEditor: [, setShowEditor],
   } = useContext(StoreContext)
 
-  const findFile = id => {
-    const file = files.filter((file, index) => index === id)
-    return {
-      file,
-      index: files.indexOf(file[0]),
-    }
-  }
-
-  const originalIndex = findFile(id).index
   const [, drag] = useDrag({
-    item: { type: 'preview', id, originalIndex },
+    item: { type: 'preview', id},
   })
   const [, drop] = useDrop({
     accept: 'preview',
     drop({ id: draggedId }) {
-      const { index: overIndex } = findFile(id)
-      moveFile(draggedId, overIndex)
+      moveFile(draggedId, id)
     },
   })
 
-  const moveFile = (id, atIndex) => {
-    const { file, index } = findFile(id)
+  const moveFile = (fromIndex, toIndex) => {
+    let newFiles = [...files]
+    newFiles.splice(toIndex, 0, newFiles.splice(fromIndex, 1)[0])
     setFiles(
-      update(files, {
-        $splice: [
-          [index, 1],
-          [atIndex, 0, ...file],
-        ],
-      })
+      newFiles
     )
   }
 
   const selectAndEdit = e => {
-    setSelectedId(e.currentTarget.id)
-    setEditorShow(true)
+    setSelectedFileId(e.currentTarget.id)
+    setShowEditor(true)
   }
 
   return (
