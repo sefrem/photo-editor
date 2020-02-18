@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { StoreContext } from '../../../utils/store'
+import classNames from 'classnames'
 import Button from '../../UI/Button'
 const store = require('store')
 
@@ -23,8 +24,9 @@ const Send = () => {
   return (
     <Button
       onClick={addToLocalStorage}
-      className='mt-15 send'
-      value='Send'
+      className={classNames('mt-15 send', { 'send_disabled': !files.length })}
+      value="Send"
+      disabled={files.length ? false : true}
     />
   )
 }
